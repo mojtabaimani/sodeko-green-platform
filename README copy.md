@@ -1,6 +1,6 @@
-# kuberise
+# Sodeko
 
-Kuberise is an internal developer platform that install core apps into an empty kubernetes cluster and makes it ready to deploy custom services. Then developers also can use this platform to deploy their services to different environments.
+This project is an internal developer platform that install core apps into an empty kubernetes cluster and makes it ready to deploy custom services. Then developers also can use this platform to deploy their services to different environments.
 
 ## Installation
 

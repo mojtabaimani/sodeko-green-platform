@@ -11,14 +11,23 @@ NAMESPACE=argocd
 kubectl create namespace $NAMESPACE --context $CONTEXT --dry-run=client -o yaml | kubectl apply --context $CONTEXT -f -
 
 # create secret for repository
-kubectl create secret generic git-credentials --context $CONTEXT -n $NAMESPACE \
-  --from-literal=name=kuberise \
+kubectl create secret generic repo-green-platform --context $CONTEXT -n $NAMESPACE \
+  --from-literal=name=green-platform \
   --from-literal=username=x \
   --from-literal=password=$REPOSITORY_TOKEN \
-  --from-literal=url=https://github.com/Kuberise/kuberise.git \
+  --from-literal=url=https://github.com/mojtabaimani/sodeko-green-platform.git \
   --from-literal=type=git \
   --dry-run=client -o yaml | kubectl apply --context $CONTEXT -n $NAMESPACE -f -
-kubectl label secret git-credentials argocd.argoproj.io/secret-type=repository --context $CONTEXT -n $NAMESPACE
+kubectl label secret repo-green-platform argocd.argoproj.io/secret-type=repository --context $CONTEXT -n $NAMESPACE
+
+kubectl create secret generic repo-platform-tools --context $CONTEXT -n $NAMESPACE \
+  --from-literal=name=platform-tools \
+  --from-literal=username=x \
+  --from-literal=password=$REPOSITORY_TOKEN \
+  --from-literal=url=https://github.com/mojtabaimani/sodeko-platform-tools.git \
+  --from-literal=type=git \
+  --dry-run=client -o yaml | kubectl apply --context $CONTEXT -n $NAMESPACE -f -
+kubectl label secret repo-platform-tools argocd.argoproj.io/secret-type=repository --context $CONTEXT -n $NAMESPACE
 
 # install argocd using helm
 PROJECT_NAME=project-$ENVIRONMENT
@@ -54,4 +63,4 @@ spec:
 EOF
 
 # add app of the apps to the argocd server using yaml file
-kubectl apply --context $CONTEXT -n $NAMESPACE -f cicd/argocd/app-of-apps-$ENVIRONMENT.yaml
+kubectl apply --context $CONTEXT -n $NAMESPACE -f pipeline/argocd/app-of-apps-$ENVIRONMENT.yaml

@@ -12,7 +12,7 @@ spec:
   project: project-prd
   source:
     path: ./app-of-apps/prd
-    repoURL: https://github.com/Kuberise/kuberise.git
+    repoURL: https://github.com/mojtabaimani/sodeko-green-platform.git
     targetRevision: HEAD
   syncPolicy:
     automated:
