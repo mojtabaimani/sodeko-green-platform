@@ -14,5 +14,28 @@ spec:
             backend:
               service:
                 name: web
+                namespace: green-prd
+                port:
+                  number: 8080
+    - host: tst.hello-world.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                namespace: green-tst
+                port:
+                  number: 8080
+    - host: acc.hello-world.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                namespace: green-acc
                 port:
                   number: 8080
