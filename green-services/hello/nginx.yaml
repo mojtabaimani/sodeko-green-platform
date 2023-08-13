@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: web
-  name: web
+    app: nginx-sample
+  name: nginx-sample
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web
+      app: nginx-sample
   template:
     metadata:
       labels:
-        app: web
+        app: nginx-sample
     spec:
       containers:
       - image: gcr.io/google-samples/hello-app:1.0
