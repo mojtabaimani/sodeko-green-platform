@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: project-acc
+  sources:
+  - repoURL: https://github.com/mojtabaimani/sodeko-platform-tools.git
+    path: tools/ingress-nginx
+    targetRevision: 0.0.1
+    helm:
+      releaseName: ingress-nginx
+      valueFiles:
+        - $values/app-values/ingress-nginx/ingress-nginx-values-acc.yaml
+  - repoURL: https://github.com/mojtabaimani/sodeko-green-platform.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-nginx
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        managed: "true"
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+      retry:
+        limit: 3
+        backoff:
+          duration: 30
+          factor: 2
+          maxDuration: 60
