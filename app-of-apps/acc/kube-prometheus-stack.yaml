@@ -9,7 +9,7 @@ spec:
   project: project-acc
   sources:
   - repoURL: https://github.com/mojtabaimani/sodeko-platform-tools.git
-    path: tools/ingress-nginx
+    path: tools/kube-prometheus-stack
     targetRevision: 0.0.1
     helm:
       releaseName: kube-prometheus-stack
