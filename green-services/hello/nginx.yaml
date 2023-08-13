@@ -1,20 +1,20 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: nginx-sample
-  name: nginx-sample
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx-sample
-  template:
-    metadata:
-      labels:
-        app: nginx-sample
-    spec:
-      containers:
-      - image: gcr.io/google-samples/hello-app:1.0
-        name: hello-app
-        resources: {}
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#     app: nginx-sample
+#   name: nginx-sample
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: nginx-sample
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx-sample
+#     spec:
+#       containers:
+#       - image: gcr.io/google-samples/hello-app:1.0
+#         name: hello-app
+#         resources: {}
