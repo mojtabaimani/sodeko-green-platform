@@ -2,17 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps-prd
-  namespace: argocd
+  namespace: green-prd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: argocd
+    namespace: green-prd
     server: https://kubernetes.default.svc
   project: project-prd
   source:
     path: ./app-of-apps/prd
-    repoURL: https://github.com/mojtabaimani/sodeko-green-platform.git
+    repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
     targetRevision: HEAD
   syncPolicy:
     automated:

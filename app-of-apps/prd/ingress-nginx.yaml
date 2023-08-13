@@ -1,26 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
-  namespace: argocd
+  name: nginx
+  namespace: green-prd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: project-prd
+  project: green-prd
   sources:
   - repoURL: https://github.com/mojtabaimani/sodeko-platform-tools.git
-    path: tools/ingress-nginx
-    targetRevision: 0.0.1
+    path: tools/nginx
+    targetRevision: HEAD
     helm:
-      releaseName: ingress-nginx
+      releaseName: nginx
       valueFiles:
-        - $values/app-values/ingress-nginx/ingress-nginx-values-prd.yaml
-  - repoURL: https://github.com/mojtabaimani/sodeko-green-platform.git
+        - $values/app-values/nginx/nginx-values-prd.yaml
+  - repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
     targetRevision: HEAD
     ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx
+    namespace: green-prd
   syncPolicy:
     managedNamespaceMetadata:
       labels:

@@ -1,26 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
-  namespace: green-acc
+  name: hello
+  namespace: green-prd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: green-acc
+  project: green-prd
   sources:
-  - repoURL: https://github.com/mojtabaimani/sodeko-platform-tools.git
-    path: tools/nginx
-    targetRevision: HEAD
-    helm:
-      releaseName: nginx
-      valueFiles:
-        - $values/app-values/nginx/nginx-values-acc.yaml
   - repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
+    path: green-services/hello
     targetRevision: HEAD
-    ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: green-acc
+    namespace: green-prd
   syncPolicy:
     managedNamespaceMetadata:
       labels:
