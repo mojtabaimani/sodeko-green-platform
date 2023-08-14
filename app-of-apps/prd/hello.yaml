@@ -9,7 +9,7 @@ spec:
   project: green-prd
   sources:
   - repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
-    path: green-services/hello
+    path: app-values/hello/overlays/prd
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc

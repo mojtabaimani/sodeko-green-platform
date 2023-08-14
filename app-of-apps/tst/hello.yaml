@@ -9,7 +9,7 @@ spec:
   project: green-tst
   sources:
   - repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
-    path: green-services/hello
+    path: app-values/hello/overlays/tst
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
