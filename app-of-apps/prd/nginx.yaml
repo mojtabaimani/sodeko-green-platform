@@ -22,11 +22,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: green-prd
   syncPolicy:
-    managedNamespaceMetadata:
-      labels:
-        managed: "true"
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
