@@ -12,7 +12,7 @@ argocdApplications:
     path: app-values/hello/overlays/acc
 
   nginx:
-    valuesFile: ../../../sedeko-green-services/app-values/nginx/nginx-values-acc.yaml
+    valuesFile: $values/app-values/nginx/nginx-values-acc.yaml
 
   secrets:
     path: green-services/secrets/acc
