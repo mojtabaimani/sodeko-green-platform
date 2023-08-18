@@ -19,7 +19,7 @@ spec:
     helm:
       valueFiles:
       - {{ default $.Values.global.valuesFile .valuesFile }}
-  - repoURL: {{ default $.Values.global.spec.source.repoURL .repoURL }}
+  - repoURL: {{ $.Values.global.spec.source.repoURL }}
     targetRevision: {{ default $.Values.global.spec.source.targetRevision .targetRevision }}
     ref: values
     {{- end }}
