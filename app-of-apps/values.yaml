@@ -24,7 +24,7 @@ argocdApplications:
     path: tools/nginx
     repoURL: https://github.com/mojtabaimani/sodeko-platform-tools.git
     helm: true
-    valuesFile: ../../sodeko-green-services/app-values/nginx/nginx-values-tst.yaml
+    valuesFile: $values/app-values/nginx/nginx-values-tst.yaml
 
   secrets:
     enabled: true
