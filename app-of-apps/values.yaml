@@ -1,0 +1,32 @@
+global:
+  env: tst
+  helmDefault: false
+  valuesFile: values.yaml
+  automated: true
+  spec:
+    project: green-tst
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: green-tst
+    source:
+      repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
+      targetRevision: HEAD
+
+argocdApplications:
+  hello:
+    enabled: true
+    name: hello-green
+    path: app-values/hello/overlays/tst
+
+  nginx:
+    enabled: true
+    name: nginx-green
+    path: tools/nginx
+    repoURL: https://github.com/mojtabaimani/sodeko-platform-tools.git
+    helm: true
+    valuesFile: ../../../sedeko-green-services/app-values/nginx/nginx-values-tst.yaml
+
+  secrets:
+    enabled: true
+    name: secrets-tst
+    path: green-services/secrets/tst

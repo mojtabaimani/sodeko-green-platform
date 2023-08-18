@@ -1,0 +1,18 @@
+global:
+  env: acc
+  spec:
+    project: green-acc
+    destination:
+      namespace: green-acc
+    source:
+      targetRevision: 1.0.0
+
+argocdApplications:
+  hello:
+    path: app-values/hello/overlays/acc
+
+  nginx:
+    valuesFile: ../../../sedeko-green-services/app-values/nginx/nginx-values-acc.yaml
+
+  secrets:
+    path: green-services/secrets/acc

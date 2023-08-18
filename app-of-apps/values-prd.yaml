@@ -1,0 +1,18 @@
+global:
+  env: prd
+  spec:
+    project: green-prd
+    destination:
+      namespace: green-prd
+    source:
+      targetRevision: 1.0.0
+
+argocdApplications:
+  hello:
+    path: app-values/hello/overlays/prd
+
+  nginx:
+    valuesFile: ../../../sedeko-green-services/app-values/nginx/nginx-values-prd.yaml
+
+  secrets:
+    path: green-services/secrets/prd

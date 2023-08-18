@@ -13,9 +13,12 @@ spec:
     server: https://kubernetes.default.svc
   project: green-acc
   source:
-    path: ./app-of-apps/acc
+    path: ./app-of-apps
     repoURL: https://github.com/mojtabaimani/sodeko-green-services.git
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-acc.yaml
   syncPolicy:
     automated:
       prune: true

@@ -1,0 +1,3 @@
+argocdApplications:
+  hello:
+    enabled: false
